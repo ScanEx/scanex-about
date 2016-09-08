@@ -1,0 +1,27 @@
+{
+    "app": {
+        "gmxMap": {
+            "mapID": "",
+            "apiKey": "E5FB6CCB5D23B5E119D2F1B26BCC57BD"
+        },
+        "debugWindow": false,
+        "hideControl": false,
+        "zoomControl": false,
+        "bottomControl": true,
+        "locationControl": false,
+        "copyrightControl": true,
+        "baseLayersControl": false,
+		"map": {
+			"scrollWheelZoom": false
+		}
+    },
+    "state": {
+        "map": {
+            "position": {
+                "x": 37.440005,
+                "y": 55.634070,
+                "z": 15
+            }
+        }
+    }
+}

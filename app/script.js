@@ -14,56 +14,52 @@ var balloonHtml = [
     '</p>',
     '</div>',
     '</div>'
-].join('\n');
+].join('\n')
 
 // balloonHtml = [
 //     '<div class="balloon">hello</div>'
-// ].join('\n');
+// ].join('\n')
 
 function setLeafletMarkerIcon() {
     L.Icon.Default = L.Icon.Default.extend({
         options: {
-            iconUrl: 'user/map-pin.png',
+            iconUrl: 'app/map-pin.png',
             iconSize: [61, 58],
             iconAnchor: [25, 58],
             popupAnchor: [0, 0],
-            shadowUrl: 'user/map-pin.png',
+            shadowUrl: 'app/map-pin.png',
             shadowSize: [0, 0],
             shadowAnchor: [0, 0]
         }
-    });
+    })
 
-    L.Icon.Default.imagePath = 'user';
+    L.Icon.Default.imagePath = 'app'
 
     L.Marker = L.Marker.extend({
         options: {
             icon: new L.Icon.Default()
         }
-    });
+    })
 }
 
-function runUserScript(cm) {
-    // TODO: add script here
-    // you can get components via component manager
-    // like this:
+function init(cm) {
+    var center = [ 55.634070, 37.440005]
+    var map = L.map(document.body).setView(center, 15)
+    map.gmxBaseLayersManager.initDefaults({
+        apiKey: 'E5FB6CCB5D23B5E119D2F1B26BCC57BD'
+    }).then(function() {
+        map.gmxBaseLayersManager.setActiveIDs(['hybrid']).setCurrentID('hybrid')
+    })
 
-    var baseLayersManager = cm.get('baseLayersManager');
-    var layersTree = cm.get('layersTree');
-    var layersHash = cm.get('layersHash');
-    var container = cm.get('container');
-    var config = cm.get('config');
-    var map = cm.get('map');
+    setLeafletMarkerIcon()
 
-    setLeafletMarkerIcon();
-
-    baseLayersManager.setActiveIDs(['hybrid']).setCurrentID('hybrid');
-
-    var center = config.state.map.position;
-    var marker = L.marker([center.y, center.x]).addTo(map);
+    var marker = L.marker(center).addTo(map)
     var popup = L.popup({
             maxWidth: 330
         })
-        .setContent(balloonHtml);
-    marker.bindPopup(popup);
-    marker.openPopup();
+        .setContent(balloonHtml)
+    marker.bindPopup(popup)
+    marker.openPopup()
 }
+
+window.addEventListener('load', init)

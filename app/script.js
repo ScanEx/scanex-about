@@ -48,7 +48,7 @@ function init(cm) {
     map.gmxBaseLayersManager.initDefaults({
         apiKey: 'E5FB6CCB5D23B5E119D2F1B26BCC57BD'
     }).then(function() {
-        map.gmxBaseLayersManager.setActiveIDs(['hybrid']).setCurrentID('hybrid')
+        map.gmxBaseLayersManager.setActiveIDs(['OSMHybrid']).setCurrentID('OSMHybrid')
     })
 
     setLeafletMarkerIcon()

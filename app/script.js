@@ -46,7 +46,7 @@ function init(cm) {
     var center = [ 55.634070, 37.440005]
     var map = L.map(document.body, {
         attributionControl: false
-    }).setView(center, 15)
+    }).setView(center, 16)
     map.gmxBaseLayersManager.initDefaults({
         apiKey: 'E5FB6CCB5D23B5E119D2F1B26BCC57BD'
     }).then(function() {
